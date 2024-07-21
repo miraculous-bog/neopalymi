@@ -1,0 +1,26 @@
+.buttons {
+	position: absolute;
+	bottom: 10px; /* Підлаштуйте це значення для розташування стрілок під слайдером */
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+	.left,
+	.right {
+		background-color: #722009; /* Темний червоний фон */
+		border: none;
+		border-radius: 50%; /* Кругла форма */
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Легка тінь */
+		color: #fff; /* Білий колір для іконки стрілки */
+		font-size: 24px; /* Розмір іконки */
+		&:hover {
+			background-color: #d73a15;
+		}
+	}
+}

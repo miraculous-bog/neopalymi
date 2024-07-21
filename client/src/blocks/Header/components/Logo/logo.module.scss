@@ -1,0 +1,28 @@
+// @import '../../../../App.scss';
+.wrapper {
+	width: 103px;
+	display: flex;
+  	align-items: center;
+}
+
+.logo {
+ display: block;
+ width: 48px;
+ height: 55px;
+ vertical-align: middle;
+ background-color: #fff;
+ @media (max-width: 768px) {
+	margin: 0 auto;
+  }
+}
+.img {
+	width: 103px;
+	
+}
+.text {
+	display: inline-block;
+	width: 177px;
+	height: 36px;
+	margin: 20px 0 20px 10px;
+	vertical-align: middle;
+}

@@ -1,0 +1,49 @@
+@import "../../App.scss";
+.map {
+	.btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.conteiner {
+	max-width: $core-wrapper-width;
+	margin: 20px auto;
+	display: flex;
+	justify-content: space-between;
+	background-image: url("../../content_images/map.png"); /* Шлях до вашого зображення карти */
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding: 340px 0 380px 0;
+	width: 100%;
+	height: auto; /* Висота буде автоматично адаптуватися */
+	@include tablet {
+		padding: 100px 0; // Adjust padding for tablet
+		background-size: contain; // Adjust background size for smaller screens
+	}
+
+	@include mobile {
+		padding: 50px 0; // Adjust padding for mobile
+		flex-direction: column; // Stack items vertically on smaller screens
+	}
+	.buttons {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		@include tablet {
+			flex-direction: row; // Line up buttons in a row for tablet
+			justify-content: space-around; // Add space around buttons
+		}
+
+		@include mobile {
+			flex-direction: column; // Stack buttons vertically on mobile
+		}
+		.empty {
+			height: 8px;
+		}
+	}
+}

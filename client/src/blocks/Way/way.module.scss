@@ -1,0 +1,77 @@
+@import "../../App.scss";
+
+.way {
+	width: 100%;
+	background-color: white;
+	@include tablet {
+		padding: 0 30px;
+	}
+}
+.wrapper {
+	max-width: $core-wrapper-width;
+	width: 100%;
+	margin: 0 auto;
+	height: 100px;
+
+	// align-items: center;
+	// vertical-align: middle;
+	padding: 0 20px;
+	position: relative;
+	@include tablet {
+		height: 100px;
+	}
+}
+.title {
+	font-size: 48px;
+	font-weight: 400;
+	line-height: 35.5px;
+	text-align: left;
+	color: $main-color;
+	z-index: 1;
+	position: relative;
+	@include tablet {
+		font-size: 35px;
+	}
+}
+.leaf {
+	position: absolute;
+	left: 0;
+	bottom: -2%;
+	@include tablet {
+		max-width: 58px;
+	}
+}
+.tree {
+	position: absolute;
+	right: 0;
+	bottom: -2%;
+	z-index: 0;
+	max-width: 345px;
+	@include tablet {
+		max-width: 217px;
+		right: -5%;
+	}
+}
+.arrow {
+	display: flex;
+	align-items: center;
+	width: 45%;
+	margin: 300px auto 0 auto;
+	@include tablet {
+		margin: 120px auto 0 auto;
+	}
+	.left,
+	.right {
+		width: 20px; /* ширина кінців стрілки */
+		height: 20px; /* висота кінців стрілки */
+		background-color: $main-color;
+	}
+	.line {
+		flex-grow: 1; /* займе всю доступну ширину */
+		height: 5px; /* висота лінії стрілки */
+		background-color: $main-color;
+	}
+	.right {
+		clip-path: polygon(100% 50%, 0 100%, 0 0); /* трикутна форма */
+	}
+}

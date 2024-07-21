@@ -1,0 +1,45 @@
+@import "../App.scss";
+// MemberCard.module.scss
+
+.wrraper {
+	max-width: $core-wrapper-width;
+	margin: 0 auto;
+	@include tablet {
+		margin: 10px;
+	}
+}
+.title {
+	font-size: 35px;
+	text-align: center;
+	color: $main-color;
+}
+.category {
+	text-align: center;
+	padding: 5px;
+	border: 3px solid #E84514;
+	display: inline-block;
+	border-radius: 20px;
+	margin: 0 auto;
+}
+.content {
+	h1 {
+		font-family: Benzin-Bold;
+		font-size: 64px;
+		font-weight: 400;
+		line-height: 74px;
+		text-align: center;
+	}
+	p {
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 41.63px;
+	}
+	b {
+		font-family: Benzin-Bold;
+		font-weight: 600;
+	}
+	img {
+		margin: 0 auto;
+		display: block;
+	}
+}

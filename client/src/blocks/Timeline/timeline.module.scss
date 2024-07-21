@@ -1,0 +1,126 @@
+@import "../../App.scss";
+
+.container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: relative;
+}
+.wrapper {
+	width: 100%;
+	background-color: #e84514;
+}
+.center {
+	padding: 80px 0;
+	max-width: $core-wrapper-width;
+	margin: 0 auto;
+	position: relative;
+	@include mobile {
+		padding: 20px 0;
+
+	}
+}
+.info {
+	background-color: #fff;
+	border-radius: 20px;
+	height: 230px;
+	padding: 20px;
+	@include mobile {
+		height: 330px;
+	}
+	a {
+		text-decoration: underline;
+		font-weight: 600;
+	}
+	.text {
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 20.44px;
+		text-align: left;
+		margin-top: 10px;
+	}
+	@include tablet {
+		margin: 10px;
+	}
+	// margin-top: 65px;
+	.title {
+		color: #0c4a30;
+		font-family: Benzin-Bold;
+		font-size: 40px;
+		font-weight: 400;
+		line-height: 46.25px;
+	}
+}
+.item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+
+	&::before {
+		content: "";
+		display: block;
+		width: 52px;
+		height: 52px;
+		border: 2px solid #fff;
+		background: #ffad94;
+		cursor: pointer;
+		border-radius: 50%;
+		transition: background-color 0.3s;
+		@include mobile {
+			width: 32px;
+			height: 32px;
+		}
+	}
+	&::after {
+		content: "";
+		margin-top: -12px;
+		width: 6px;
+		height: 65px;
+		background-color: $main-color;
+		transition: background-color 0.3s;
+	}
+	&.active::before {
+		background-color: #0c4a30;
+	}
+	&.active::after {
+		content: "";
+		margin-top: -13px;
+		width: 6px;
+		height: 75px;
+		background-color: white;
+		transition: background-color 0.3s;
+	}
+	&:not(:last-child) .timeline-line {
+		width: 100px; // Line length
+		height: 2px;
+		background-color: #ccc;
+		position: absolute;
+		top: 10px; // Adjust this based on the exact size and position of your circles
+		right: -100px; // Adjust based on line length and item width
+	}
+}
+
+.itemContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 12px; // Distance from the timeline
+}
+.carouselstyles {
+	height:270px;
+	@include mobile {
+		height: 430px;
+	}
+	// display: flex;
+	// justify-content: space-between;
+}
+.carouselitemstyles {
+	.react-multiple-carousel__arrow {
+		bottom: -10%;
+	}
+	// .react-multiple-carousel__arrow--right{
+	// 	rigth: -4%;
+	// }
+}

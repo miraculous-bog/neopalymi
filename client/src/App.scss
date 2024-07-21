@@ -1,0 +1,102 @@
+:root {
+  --main-color: #E84514;
+  --bg-color: #131313;
+  --core-color: #ACBE1A;
+  --primary-main-color:  #047CC8;
+  --primare-dark-color: #92B6D7;
+  --primare-medium-color: #F8F7F5;
+  --primary-light-color: #FFFFFF;
+  --secondary-main-color: #000000;
+  --secondary-dark-color: #1F2225;
+  --secondary-medium-color: #424F5B;
+  --secondary-light-color: #87919A;
+}
+/* src/fonts/fonts.css */
+/* src/fonts/fonts.css */
+@font-face {
+  font-family: 'NAMU';
+  src: url('./fonts/NAMU-1400.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NAMU';
+  src: url('./fonts/NAMU-1600.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Додайте інші варіанти */
+@font-face {
+  font-family: 'NAMU';
+  src: url('./fonts/NAMU-1750.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NAMU';
+  src: url('./fonts/NAMU-Pro.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+body {
+  font-family: 'NAMU', sans-serif;
+  background-color: var(--bg-color);
+}
+
+h1, h2, h3 {
+  font-family: 'NAMU', sans-serif;
+  font-weight: 700;
+}
+
+$core-wrapper-width: 1136px;
+$main-color: #E84514;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none; /* Видаляє підкреслення */
+  color: inherit; /* Посилання буде того ж кольору, що й текст навколо */
+  cursor: pointer; /* Надає вигляд курсора, коли наводиш на посилання */
+
+  &:hover,
+  &:active,
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:focus {
+    outline: none; /* Видаляє контур, який з'являється при фокусуванні на елемент */
+  }
+}
+ul {
+  list-style-type: none;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}

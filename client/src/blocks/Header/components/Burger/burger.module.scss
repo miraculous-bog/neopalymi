@@ -1,0 +1,15 @@
+@import '../../../../App.scss';
+.burger {
+	width: 30px;
+	height: 20px;
+	cursor: pointer;
+	transition: all 2s ease;
+	display: none;
+	margin: 20px;
+	// background-color: red;
+	@include tablet {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+  }

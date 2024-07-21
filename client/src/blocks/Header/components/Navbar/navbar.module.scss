@@ -1,0 +1,88 @@
+@import '../../../../App.scss';
+.list {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	list-style-type: none;
+	margin: 0;
+	height: 100%;
+	vertical-align: middle;
+	font-size: 19px;
+	font-weight: 600;
+	color:(--bg-color);
+	a {
+		color: black; 
+	}
+	@include tablet {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	  }
+}
+.item {
+	align-items: center;
+	vertical-align: middle;
+	// margin: 10px;
+	@include tablet {
+		text-align: center;
+	}
+}
+.element {
+	color: (--core-color);
+	cursor: pointer;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-left: 43px;
+	align-items: center;
+	vertical-align: middle;
+	position: relative;
+
+	@include tablet {
+		margin-left: 0;
+		width: 100%;
+	  }
+	svg {
+		@include tablet {
+			display: none;
+		  }
+	}
+}
+
+.text {
+	margin: 0 0 0 15px;
+	color: (--bg-color);
+	font-size: 16px;
+	@include tablet {
+		font-size: 25px;
+		padding: 0 30px;
+		margin:15px;
+	  }
+}
+.element:hover::after {
+	content: "";
+	position: absolute;
+	bottom: -13px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #FFFFFF;
+	border-radius: 19px;
+	@include tablet {
+		bottom: -5px;
+
+	  }
+  }
+  .navigation {
+
+	@include tablet {
+		display: none;
+	  }
+}
+
+.mobnavigation {
+	display: none;
+	@include tablet {
+		display: block;
+	  }
+}

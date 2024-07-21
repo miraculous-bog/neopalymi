@@ -1,0 +1,81 @@
+@import "../../App.scss";
+.purpose {
+	background-color: white;
+	padding: 60px 0;
+}
+.title {
+	font-size: 48px;
+	font-weight: 400;
+	line-height: 55px;
+	text-align: center;
+	color: $main-color;
+}
+.titletext {
+	// font-size: 48px;
+	// font-weight: 400;
+	// line-height: 55px;
+	// text-align: left;
+	// color: $main-color;
+}
+.wrapper {
+	max-width: $core-wrapper-width;
+	margin: 60px auto 0 auto;
+	display: flex;
+	justify-content: space-between;
+	@include mobile {
+		flex-direction: column-reverse;
+		margin: 10px;
+		.image {
+			margin-right: 0px;
+			width: 100%;
+		}
+	}
+	.image {
+		margin-right: 28px;
+		width: 309px;
+		height: 487px;
+	}
+	.info {
+		.titletext {
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 20px;
+			color: $main-color;
+			text-align: left;
+			.highlight {
+				font-weight: 600;
+			}
+		}
+		.list {
+			margin-top: 16px;
+			color: $main-color;
+			.item {
+				font-size: 20px;
+				font-weight: 700;
+				line-height: 21px;
+				position: relative;
+				padding: 11px 0 11px 52px;
+				margin-top: 24px;
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0px; // Змістіть листочок до верху картки
+					left: 0; // Центрування по горизонталі
+					transform: translateX(-50%); // Точне центрування листочка
+					width: 32px; // Ширина листочка
+					height: 44px; // Висота листочка
+					background: url('../../icons/check.svg') no-repeat center center;
+					background-size: cover;
+					z-index: 10; // Вище за інші елементи
+				}
+				@include mobile {
+					padding: 11px 0 5px 42px;
+					&::before {
+						transform: translateX(0%); // Точне центрування листочка
+	
+					}
+				}
+			}
+		}
+	}
+}

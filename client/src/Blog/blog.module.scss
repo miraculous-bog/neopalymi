@@ -1,0 +1,18 @@
+@import "../App.scss";
+
+.main {
+	max-width: $core-wrapper-width;
+	margin: 0 auto;
+	@include tablet {
+		margin: 10px;
+	}
+	.container {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 22px;
+		@include tablet {
+			flex-direction: column;
+		}
+	}
+}

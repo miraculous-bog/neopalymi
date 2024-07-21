@@ -1,0 +1,53 @@
+@import "../../App.scss";
+.footer {
+	width: 100%;
+	padding: 70px 0;
+	background-color: $main-color;
+	color: #fff;
+	@include tablet {
+		padding: 60px 10px;
+		text-align: center;
+	}
+	.wrapper {
+		max-width: $core-wrapper-width;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-around;
+		@include tablet {
+			flex-direction: column;
+		}
+		.contactList {
+			margin-top: 10px;
+		}
+		// .contacts {
+		// 	margin: 20px 0;
+		// }
+		.contactInfo {
+			margin-top: 10px;
+		}
+		.contactItem {
+			color: #fff; // Білий колір тексту
+			text-decoration: none; // Видалення підкреслення
+			display: flex; // Зробити елемент flex контейнером
+			align-items: center;
+			margin: 5px 0;
+			.icon {
+				margin-right: 10px;
+			}
+			&:hover {
+				.icon {
+					fill: #000; // Чорний колір іконки при наведенні
+				}
+			}
+		}
+
+		.icon {
+			fill: #fff; // Білий колір іконки за замовчуванням
+			transition: fill 0.3s; // Плавна зміна кольору
+		}
+	}
+	.address {
+		margin-top: 20px;
+		text-align: center;
+	}
+}
