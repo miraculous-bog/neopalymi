@@ -28,7 +28,7 @@ const SliderBlocks = () => {
 				<Slider {...settings}>
 				{data_heroes.map((cardHeroesData) =>
 					(<SliderCard name={cardHeroesData.name}
-						imageSrc={`https://github.com/miraculous-bog/dozrili/blob/main/client/src/content_images/photos/${cardHeroesData.imageSrc}?raw=true`}
+						imageSrc={`https://github.com/miraculous-bog/neopalymi/blob/main/client/src/content_images/photos/${cardHeroesData.imageSrc}?raw=true`}
 						key={cardHeroesData.name} />)
 					)}
 				</Slider>
