@@ -1,15 +1,15 @@
 import React from 'react';
 import Slider from "react-slick";
 
-import SliderCard from './SliderCard';
+import SliderCard from '../SliderBlocks/SliderCard';
 
 import LeftArrow from '../../content_images/left_arrow.svg';
 import RightArrow from '../../content_images/right_arrow.svg';
 
-import data_heroes from '../../helper/data_heroes';
+import data_news from '../../helper/data_news';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from './sliderBlocks.module.scss';
+import styles from './sliderNews.module.scss';
 
 const SampleNextArrow = (props) => {
 	const { onClick } = props;
@@ -45,7 +45,7 @@ const SamplePrevArrow = (props) => {
 	);
 }
 
-const SliderBlocks = () => {
+const SliderNews = () => {
 
 	const settings = {
 		// className: "center",
@@ -80,15 +80,15 @@ const SliderBlocks = () => {
 
 	return (
 		<div className={styles.slider}>
-			<h1 className={styles.title}>Герої</h1>
-			<h2 className={styles.subtitle}>Кожна історія наших пацієнтів — про надзвичайно складний і водночас героїчний життєвий досвід. Воєнні дії, полон, окупація, евакуація, обстріли — усі ці жахливі події залишили слід на тілах наших «неопалимих».</h2>
+			<h1 className={styles.title}>Про «Неопалимих» у ЗМІ</h1>
+
 			<div className={`${styles.wrapper}`}>
-				<div className={`.slider-container`} style={{padding: '0 0px'}}>
+				<div className={`.slider-container`} style={{ padding: '0 0px' }}>
 					<Slider {...settings}>
-						{data_heroes.map((cardHeroesData) =>
-						(<SliderCard name={cardHeroesData.name}
-							imageSrc={`https://github.com/miraculous-bog/neopalymi/blob/main/client/src/content_images/photos/${cardHeroesData.imageSrc}?raw=true`}
-							key={cardHeroesData.name} />)
+						{data_news.map((cardNewsData) =>
+						(<SliderCard name={cardNewsData.name}
+							imageSrc={`https://github.com/miraculous-bog/neopalymi/blob/main/client/src/content_images/photos/${cardNewsData.imageSrc}?raw=true`}
+							key={cardNewsData.name} />)
 						)}
 					</Slider>
 				</div>
@@ -97,4 +97,4 @@ const SliderBlocks = () => {
 	);
 };
 
-export default SliderBlocks;
+export default SliderNews;
