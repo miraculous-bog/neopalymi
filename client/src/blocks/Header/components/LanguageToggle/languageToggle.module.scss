@@ -1,0 +1,23 @@
+// LanguageToggle.module.scss
+
+.languageToggle {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 21.94px;
+	width: 110px;
+	.languageOption {
+	  padding: 5px 10px;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  transition: background-color 0.3s;
+  
+	  &.active {
+		background-color: white;
+		color: #007bff;
+	  }
+	}
+  }
+  

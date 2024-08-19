@@ -1,7 +1,7 @@
 import React from 'react';
 
 import JoinBtn from '../../components/JoinBtn';
-import SupportBtn from '../../components/SupportBtn';
+import SupportBtn from '../../components/MainButton';
 
 import styles from './map.module.scss';
 

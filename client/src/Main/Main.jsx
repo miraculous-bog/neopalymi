@@ -1,34 +1,21 @@
 import React from 'react';
 
-import Banner from '../blocks/Banner';
-import Mission from '../blocks/Mission';
-import Team from '../blocks/Team/Team';
-import Values from '../blocks/Values';
-import Purpose from '../blocks/Purpose';
-import Map from '../blocks/Map';
-import Partners from '../blocks/Partners/Partners';
-import Timeline from '../blocks/Timeline';
-import Way from '../blocks/Way';
+import AboutUs from '../blocks/AboutUs';
 import SliderBlocks from '../blocks/SliderBlocks';
 import SliderNews from '../blocks/SliderNews';
+import MultiSlider from '../blocks/MultiSlider';
+import Quote from '../blocks/Quote';
 import styles from './main.module.scss';
 
 const Main = () => {
   return (
     <div className={styles.main}>
+      <AboutUs />
+      <Quote />
       <SliderBlocks />
       <SliderNews />
-
-      <Banner />
-      <Mission />
-      <Way />
-      <Timeline />
-      <Team />
-      <Values />
-      <Purpose />
-      <Map />
-      <Partners />
-
+      <MultiSlider />
+    
     </div>
   );
 };

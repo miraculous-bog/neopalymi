@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './navbar.module.scss';
-import HomeIcon from '../../../../icons/menu.png';
+import HomeIcon from '../../../../icons/burger_active.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
@@ -33,7 +33,7 @@ const NavLinks = () => {
         >
           <div className={styles.element}>
             {/* <HomeIcon/> */}
-            <p className={styles.text}>хто ми</p>
+            <p className={styles.text}>Герої</p>
           </div>
         </ScrollLink>
       </motion.li>
@@ -46,7 +46,7 @@ const NavLinks = () => {
         >
           <div className={styles.element}>
             {/* <HomeIcon /> */}
-            <p className={styles.text}>спільнота</p>
+            <p className={styles.text}>Новини</p>
           </div>
         </ScrollLink>
 
@@ -55,7 +55,7 @@ const NavLinks = () => {
         <Link to='/blog'>
 
           <div className={styles.element}>
-            <p className={styles.text}>що ми робимо</p>
+            <p className={styles.text}>Donate</p>
           </div>
         </Link>
 

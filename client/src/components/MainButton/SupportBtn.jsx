@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './supportBtn.module.scss';
 
-const SupportBtn = ({ isWideMode }) => {
+const MainButton = ({ isWideMode }) => {
   return (
     <a to='https://send.monobank.ua/jar/7C743Le9ff' target="_blank">
     <div className={styles.button}>
@@ -12,4 +12,4 @@ const SupportBtn = ({ isWideMode }) => {
   );
 };
 
-export default SupportBtn;
+export default MainButton;

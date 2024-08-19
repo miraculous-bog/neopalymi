@@ -2,8 +2,8 @@
 import React from 'react';
 import styles from './burger.module.scss';
 
-import MenuImg from '../../../../icons/menu.png';
-import CloseImg from '../../../../icons/close.png';
+import MenuImg from '../../../../icons/burger_non_active.svg';
+import CloseImg from '../../../../icons/burger_active.svg';
 
 const Burger = ({ isOpen, onClick }) => {
   return (

@@ -1,6 +1,7 @@
+@import url('../../App.scss');
 .button {
 	border-radius: 8px;
-	border: 2px solid #E84514;
+	border: 2px solid var(--primary-main-color);
 	color:#E84514;
 	cursor: pointer;
 	font-size: 14px;

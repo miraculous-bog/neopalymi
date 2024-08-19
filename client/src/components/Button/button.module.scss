@@ -1,0 +1,21 @@
+@import url('../../App.scss');
+.button {
+	border-radius: 8px;
+	border: 2px solid var(--primary-main-color);
+	color:var(--primary-light-color);
+	cursor: pointer;
+	width: 258px;
+	height: 57px;
+	font-size: 18px;
+	font-weight: 500;
+	// padding: 13px 30px;
+	background-color: var(--primary-main-color);
+	&:hover {
+		background-color: var(--primary-light-color);
+		color:var(--primary-main-color);
+
+	}
+	// &:active {
+	// 	background-color: #FEE9D6;
+	// }
+}

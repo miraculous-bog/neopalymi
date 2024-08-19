@@ -9,7 +9,7 @@ import Footer from './blocks/Footer/Footer';
 const Layout = () => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <div>
         <Outlet />
         {/* <Footer /> */}

@@ -48,8 +48,8 @@ const SamplePrevArrow = (props) => {
 const MultiSlider = () => {
 
 	const settings = {
-		className: "center",
-		centerMode: true,
+		// className: "center",
+		// centerMode: true,
 		dots: false,
 		infinite: true,
 		speed: 500,
