@@ -1,0 +1,30 @@
+@import "../../App.scss";
+
+.acheivment {
+	
+	margin-top: 50px;
+}
+.wrapper {
+	max-width: $core-wrapper-width;
+	margin: 0 auto;
+}
+.container {
+	display: flex;
+	justify-content: space-between;
+	.item {
+		width: 238px;
+		color: var(--primary-main-color);
+		.image {
+			height: 126px;
+			display: flex;
+			justify-content: center;
+		}
+		.title {
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 24px;
+			text-align: center;
+			margin-top: 34px;
+		}
+	}
+}

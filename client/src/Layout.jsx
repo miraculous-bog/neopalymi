@@ -5,7 +5,7 @@ import Header from './blocks/Header';
 // import Footer from './pages/Footer';
 
 import './App.scss';
-import Footer from './blocks/Footer/Footer';
+import Footer from './blocks/Footer';
 const Layout = () => {
   return (
     <>
@@ -15,7 +15,7 @@ const Layout = () => {
         {/* <Footer /> */}
       </div>
       {/* <Header /> */}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
