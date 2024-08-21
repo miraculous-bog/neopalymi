@@ -13,10 +13,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/neopalymi" element={<Layout />}>
           <Route index element={<Main />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<Clause />} />
           <Route path="signIn" element={<SignIn />} />
           {/* <Route path="not-found" element={<NotFound />} /> */}
 
