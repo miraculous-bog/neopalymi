@@ -6,6 +6,7 @@ import SliderCard from '../SliderBlocks/SliderCard';
 import LeftArrow from '../../content_images/left_arrow.svg';
 import RightArrow from '../../content_images/right_arrow.svg';
 
+import getPath from '../../helper/github_img_path';
 import data_news from '../../helper/data_news';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -87,7 +88,7 @@ const SliderNews = () => {
 					<Slider {...settings}>
 						{data_news.map((cardNewsData) =>
 						(<SliderCard name={cardNewsData.name}
-							imageSrc={`https://github.com/miraculous-bog/neopalymi/blob/main/client/src/content_images/photos/${cardNewsData.imageSrc}?raw=true`}
+							imageSrc={getPath(cardNewsData.imageSrc)}
 							key={cardNewsData.name} />)
 						)}
 					</Slider>

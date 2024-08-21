@@ -6,6 +6,7 @@ import MultiSliderCard from './MultiSliderCard';
 import LeftArrow from '../../content_images/left_arrow.svg';
 import RightArrow from '../../content_images/right_arrow.svg';
 
+import getPath from '../../helper/github_img_path';
 import data_ambassador from '../../helper/data_ambassador';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -88,7 +89,7 @@ const MultiSlider = () => {
 					<Slider {...settings}>
 						{data_ambassador.map((cardHeroesData) =>
 						(<MultiSliderCard name={cardHeroesData.name}
-							imageSrc={`https://github.com/miraculous-bog/neopalymi/blob/main/client/src/content_images/photos/${cardHeroesData.imageSrc}?raw=true`}
+							imageSrc={getPath(cardHeroesData.imageSrc)}
 							key={cardHeroesData.name} />)
 						)}
 					</Slider>

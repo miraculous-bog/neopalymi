@@ -5,6 +5,7 @@ import CardMember from './CardMember';
 
 import OrangeSmille from '../../content_images/OrangeSmile.png';
 
+import getPath from '../../helper/github_img_path';
 import data_team from '../../helper/data_team';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -52,7 +53,7 @@ const Team = () => {
 					(<CardMember name={cardMemberData.name}
 						role={cardMemberData.role}
 						link={cardMemberData.link}
-						imageSrc={`https://github.com/miraculous-bog/dozrili/blob/main/client/src/content_images/photos/${cardMemberData.imageSrc}?raw=true`}
+						imageSrc={getPath(cardMemberData.imageSrc)}
 						key={cardMemberData.name} />)
 					)}
 				</Carousel>
