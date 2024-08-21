@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/neopalymi/static/css/main.aded7592.css",
-    "main.js": "/neopalymi/static/js/main.71abf737.js",
+    "main.js": "/neopalymi/static/js/main.313310d9.js",
     "static/media/main.png": "/neopalymi/static/media/main.6e7e48b8bc172149e0ca.png",
     "static/media/NAMU-Pro.ttf": "/neopalymi/static/media/NAMU-Pro.b30d0e0cc330be936b3e.ttf",
     "static/media/NAMU-1600.ttf": "/neopalymi/static/media/NAMU-1600.12e811775afb9ae840bf.ttf",
@@ -27,10 +27,10 @@
     "static/media/left_arrow.svg": "/neopalymi/static/media/left_arrow.94c239185aebb4a54d79e3a19a94d239.svg",
     "static/media/right_arrow.svg": "/neopalymi/static/media/right_arrow.0cd67f2adc9200d320ba8d1729db4ff3.svg",
     "main.aded7592.css.map": "/neopalymi/static/css/main.aded7592.css.map",
-    "main.71abf737.js.map": "/neopalymi/static/js/main.71abf737.js.map"
+    "main.313310d9.js.map": "/neopalymi/static/js/main.313310d9.js.map"
   },
   "entrypoints": [
     "static/css/main.aded7592.css",
-    "static/js/main.71abf737.js"
+    "static/js/main.313310d9.js"
   ]
 }
