@@ -20,12 +20,10 @@
 		display: flex;
 		justify-content: space-between;
 		gap: 140px;
+		flex-wrap: wrap;
 		@include mobile {
 			gap: 20px;
 		}
-		// display: flex;
-		// justify-content: space-between;
-		flex-wrap: wrap;
 		.partner {
 			// width: auto;
 			// height: auto;

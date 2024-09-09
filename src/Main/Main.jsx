@@ -7,6 +7,8 @@ import MultiSlider from '../blocks/MultiSlider';
 import Quote from '../blocks/Quote';
 import styles from './main.module.scss';
 import Acheivment from '../blocks/Acheivment';
+import Partners from '../blocks/Partners/Partners';
+import Supporters from '../blocks/Supporters/Supporters';
 
 import DataQuotes from '../helper/data_quotes'
 console.log(DataQuotes);
@@ -20,7 +22,8 @@ const Main = () => {
       <SliderBlocks />
       <SliderNews />
       <MultiSlider />
-    
+      <Partners />
+      <Supporters />
     </div>
   );
 };

@@ -12,31 +12,14 @@ import '../../App.scss';
 
 const Header = () => {
   const [burger, setBurger] = useState(true);
-  const [scrolled, setScrolled] = useState(false);
-
   const handleBurger = () => {
     setBurger((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <header
-      className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}
+      className={`${styles.header}`}
     >
       <div className={styles.wrapper}>
         <Logo />

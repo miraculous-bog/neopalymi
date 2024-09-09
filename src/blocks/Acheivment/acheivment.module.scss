@@ -11,9 +11,18 @@
 .container {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
+	@include mobile {
+		flex-direction: center;
+		align-items: center;
+		justify-content: center;
+	}
 	.item {
 		width: 238px;
 		color: var(--primary-main-color);
+		@include mobile {
+			margin-top: 30px;
+		}
 		.image {
 			height: 126px;
 			display: flex;
