@@ -9,6 +9,7 @@ import styles from './main.module.scss';
 import Acheivment from '../blocks/Acheivment';
 import Partners from '../blocks/Partners/Partners';
 import Supporters from '../blocks/Supporters/Supporters';
+import Map from '../blocks/Map/Map';
 
 import DataQuotes from '../helper/data_quotes'
 console.log(DataQuotes);
@@ -22,8 +23,10 @@ const Main = () => {
       <SliderBlocks />
       <SliderNews />
       <MultiSlider />
+      <Map />
       <Partners />
       <Supporters />
+      
     </div>
   );
 };

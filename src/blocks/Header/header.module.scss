@@ -34,10 +34,10 @@
 }
 .content {
   height: 617px;
-  background-image: url('../../content_images/main.png');
+  background-image: url("../../content_images/main.png");
   background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
   .text {
     position: absolute;
@@ -66,8 +66,9 @@
       position: relative;
       margin-top: 86px;
       display: inline;
-      &::before, &:after {
-        content: url('../../icons/neopalymi.svg'); /* Замініть 'URL_іконки' на шлях до вашої іконки */
+      &::before,
+      &:after {
+        content: url("../../icons/neopalymi.svg"); /* Замініть 'URL_іконки' на шлях до вашої іконки */
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -107,24 +108,36 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
-      a {
+
+      li {
         margin-top: 20px;
+
+        a {
+          text-decoration: none;
+          color: var(--primary-light-color); // Колір тексту для посилань
+          &:hover {
+            color: var(--primary-hover-color); // Колір при наведенні
+          }
+        }
       }
     }
   }
 }
 .hidden {
-  display: none;
-  @include tablet {
+  display: none; // За замовчуванням приховано на всіх екранах
+  @media (max-width: 1024px) { // Показуємо елементи тільки на мобільних і планшетах до 1024px
     display: block;
   }
 }
+
 .show {
-  display: block;
-  @include tablet {
+  display: block; // За замовчуванням відображається на великих екранах
+  @media (max-width: 1024px) { // Приховуємо на планшетах і мобільних пристроях
     display: none;
-  }  
+  }
 }
+
+
 .empty {
   max-width: 350px;
   min-width: 52px;

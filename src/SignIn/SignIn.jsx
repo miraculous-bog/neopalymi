@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import URL from '../helper/data';
 import styles from './signIn.module.scss';
 
-const focusColor = '#E84514';
+const focusColor = '#047CC8';
 
 const SignIn = () => {
   const [credentials, setCredentials] = useState({ name: '', password: '' });
@@ -29,7 +29,7 @@ const SignIn = () => {
       const data = await response.json();
       if (response.ok && data.successful) {
         localStorage.setItem('token', data.token);
-        navigate('/blog');
+        navigate('/neopalymi');
       } else {
         setError('Неправильні ім’я користувача або пароль.');
       }
@@ -54,7 +54,7 @@ const SignIn = () => {
         })
         .then(data => {
           if (data.user) {
-            navigate('/blog');
+            navigate('/neopalymi');
           }
         })
         .catch(() => {

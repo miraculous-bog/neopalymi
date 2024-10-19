@@ -29,7 +29,6 @@ const responsive = {
 	}
 };
 const Team = () => {
-	const path = 'https://github.com/miraculous-bog/dozrili/blob/main/src/content_images/photos/';
 	console.log(data_team);
 	return (
 		<div className={styles.team} id="team">

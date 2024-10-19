@@ -10,7 +10,7 @@ import styles from './logo.module.scss';
 const Logo = () => {
   return (
     <div className={styles.wrapper}>
-      <Link to='/'>
+      <Link to='/neopalymi'>
       <img className={styles.img} src={logoImg} alt="logo-img" />
       </Link>
       {/* <img className={styles.text} src={logoText} alt="logo-text" /> */}
