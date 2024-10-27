@@ -59,19 +59,19 @@ const Header = () => {
             <nav className={styles.navbar}>
               <ul>
                 <li className={`${styles.item} ${styles.hidden}`}>
-                  <Link to='/heroes'>Герої</Link>
+                  <Link to='/neopalymi/heroes'>Герої</Link>
                 </li>
                 <li className={`${styles.item} ${styles.hidden}`}>
-                  <Link to='/news'>Новини</Link>
+                  <Link to='/neopalymi/news'>Новини</Link>
                 </li>
                 <li className={`${styles.item} ${styles.hidden}`}>
-                  <Link to='/donate'>Donate</Link>
+                  <Link to='/neopalymi/donate'>Donate</Link>
                 </li>
                 <li className={`${styles.item}`}>
                   <Link to='/neopalymi/ambassadors'>Амбасадори</Link>
                 </li>
                 <li className={`${styles.item}`}>
-                  <Link to='/clinics'>Клініки</Link>
+                  <Link to='/neopalymi/clinics'>Клініки</Link>
                 </li>
                 <li className={`${styles.item}`}>
                   <Link to='/neopalymi/team'>Команда</Link>

@@ -1,24 +1,35 @@
 /* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import ReactQuill from 'react-quill';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import styles from './editor.module.scss';
 import URL from '../../helper/data';
 
+const modules = {
+  toolbar: [
+    [{ 'header': [1, 2, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+    ['link', 'image'],
+    ['clean']
+  ],
+};
+
+
 function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdate }) {
   console.log(initialData);
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
-  const [error, setError] = useState({ name: false,  description: false, image: false });
+  const [error, setError] = useState({ name: false, content: false, image: false });
 
-  // Prefill fields if mode is update and initialData exists
   useEffect(() => {
     if (mode === 'update' && initialData) {
       setName(initialData.name);
-      setDescription(initialData.description);
-      setImage(initialData.mainPhoto); // Optional: handle image pre-filling
+      setContent(initialData.content);
+      setImage(initialData.mainPhoto);
     }
   }, [initialData, mode]);
 
@@ -30,10 +41,10 @@ function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdat
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name ||  !description || (!image && mode === 'create')) {
+    if (!name || !content || (!image && mode === 'create')) {
       setError({
         name: !name,
-        description: !description,
+        content: !content,
         image: mode === 'create' && !image,
       });
       return;
@@ -41,13 +52,13 @@ function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdat
 
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('description', description);
+    formData.append('content', content);
     if (image instanceof File) {
       formData.append('mainPhoto', image); // Only append image if it's a new file
     }
 
     try {
-      const url = mode === 'create' ? `${URL}/api/ambassadors` : `${URL}/api/ambassadors/${initialData._id}`;
+      const url = mode === 'create' ? `${URL}/api/heroes` : `${URL}/api/heroes/${initialData._id}`;
       const method = mode === 'create' ? 'POST' : 'PUT';
 
       const response = await fetch(url, {
@@ -67,7 +78,7 @@ function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdat
     } catch (error) {
       console.error('Error during the upload:', error);
     }
-};
+  };
 
   return (
     <div className={styles.wrapper} style={{ backgroundColor: '#92B6D7', padding: '20px', borderRadius: '10px' }}>
@@ -82,14 +93,8 @@ function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdat
         margin="normal"
         style={{ backgroundColor: '#fff', marginBottom: '15px' }}
       />
-      <TextareaAutosize
-        placeholder="Description"
-        minRows={5}
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        style={{ width: '100%', padding: '10px', fontSize: '16px', borderColor: '#047CC8', borderRadius: '5px', marginBottom: '15px' }}
-      />
-      {error.description && <p style={{ color: '#D32F2F' }}>Будь ласка, введіть опис.</p>}
+      <ReactQuill theme="snow" value={content} onChange={setContent} modules={modules} />
+      {error.content && <p style={{ color: '#D32F2F' }}>Будь ласка, введіть опис.</p>}
 
       <input
         type="file"

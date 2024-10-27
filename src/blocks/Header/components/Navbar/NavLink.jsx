@@ -24,41 +24,28 @@ const NavLinks = () => {
 
     <ul className={styles.list}>
       <motion.li initial={animateFrom} animate={animateTo} className={styles.item}>
-
-        <ScrollLink
-          to="mission" // ID блоку на головній сторінці
-          smooth={true}
-          duration={500}
-          onClick={() => handleNavClick('/', 'mission')}
-        >
+        <Link to="/neopalymi/heroes" onClick={() => handleNavClick('/', 'neopalymi/heroes')}>
           <div className={styles.element}>
             {/* <HomeIcon/> */}
             <p className={styles.text}>Герої</p>
           </div>
-        </ScrollLink>
+        </Link>
       </motion.li>
       <motion.li initial={animateFrom} animate={animateTo} className={styles.item}>
-        <ScrollLink
-          to="project" // ID блоку на головній сторінці
-          smooth={true}
-          duration={500}
-          onClick={() => handleNavClick('/', 'community')}
-        >
+        <Link to="/neopalymi/news" onClick={() => handleNavClick('/', 'neopalymi/news')}>
           <div className={styles.element}>
-            {/* <HomeIcon /> */}
+            {/* <HomeIcon/> */}
             <p className={styles.text}>Новини</p>
           </div>
-        </ScrollLink>
-
+        </Link>
       </motion.li>
       <motion.li initial={animateFrom} animate={animateTo} className={styles.item}>
-        <Link to='/blog'>
-
+        <Link to="/neopalymi/donate" onClick={() => handleNavClick('/', 'neopalymi/donate')}>
           <div className={styles.element}>
+            {/* <HomeIcon/> */}
             <p className={styles.text}>Donate</p>
           </div>
         </Link>
-
       </motion.li>
     </ul>
 

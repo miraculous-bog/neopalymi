@@ -2,8 +2,11 @@
 
 .team {
 	max-width: $core-wrapper-width;
-	margin: 60px auto 0 auto;
-
+	margin: 30px auto 0 auto;
+	padding: 0 32px;
+	@include mobile {
+		margin: 40px auto 0 auto;
+	}
 	.cards {
 		display: flex;
 		justify-content: space-between;

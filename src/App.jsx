@@ -11,6 +11,8 @@ import SignIn from './SignIn';
 import Clause from './Clause';
 import Team from './Team';
 import Ambassadors from './Ambassadors/Ambassdors';
+import Heroes from './Heroes/Heroes';
+import News from './News/News';
 // import Ambassadors from './Ambassadors';
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="signIn" element={<SignIn />} />
           <Route path="team" element={<Team />} />
           <Route path="ambassadors" element={<Ambassadors />} />
+          <Route path="heroes" element={<Heroes />} />
+          <Route path="news" element={<News />} />
           {/* <Route path="not-found" element={<NotFound />} /> */}
 
 

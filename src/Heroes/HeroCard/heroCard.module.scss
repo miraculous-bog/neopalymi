@@ -1,0 +1,77 @@
+@import '../../App.scss';
+.container {
+  border: 3px solid var(--primary-main-color);
+  padding: 20px;
+  max-width: 100%;
+  margin: 15px auto;
+  border-radius: 20px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  @include mobile {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.image {
+  width: 365px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 10px;
+  float: left;
+  @include tablet {
+    width: 290px;   
+  }
+  @include mobile {
+    max-width: 175px;
+    width: 100%; 
+    margin-right: 0;  
+  }
+}
+
+.text {
+  flex: 1;
+  @include mobile {
+    text-align: center;
+  }
+  .title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 26.82px;
+    @include mobile {
+      margin-top: 20px;
+      font-size: 20px;
+      line-height: 24.38px;
+    }
+  }
+  .info {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.94px;
+    margin-top: 20px;
+    @include mobile {
+    font-size: 16px;
+    line-height: 19.5px;
+    }
+  }
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}

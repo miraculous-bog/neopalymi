@@ -6,7 +6,7 @@ import styles from './teamMemberCard.module.scss';
 
 const TeamMemberCard = ({ name, position, description, mainPhoto, isAuthorized, handleDelete, handleUpdate, teamMemberId }) => {
   return (
-    <div className={styles.teamMemberCard}>
+    <div className={styles.wrapper}>
       <div className={styles.container}>
         <img src={`${URL}/${mainPhoto}`} alt={`Фото ${name}`} className={styles.photo} />
       </div>

@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import AmbassadorCard from './AmbassadorCard/AmbassadorCard';
+import NewsCard from './NewsCard/NewsCard';
 import Editor from './Editor';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import URL from '../helper/data';
-import styles from '../Team/team.module.scss';
+import styles from './news.module.scss';
 
-const Ambassadors = () => {
-  const [ambassadorsData, setAmbassadorsData] = useState([]);
+const News = () => {
+  const [newsData, setNewsData] = useState([]);
   const [open, setOpen] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(false); // Для авторизації
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState('');
-  const [editingAmbassador, setEditingAmbassador] = useState(null); // Для редагування члена команди
+  const [editingArticle, setEditingArticle] = useState(null);
 
-  // Функція перевірки авторизації
   const checkAuthorization = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -45,10 +44,10 @@ const Ambassadors = () => {
     }
   };
 
-  const handleDelete = async (ambassadorId) => {
+  const handleDelete = async (newsId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${URL}/api/ambassadors/${ambassadorId}`, {
+      const response = await fetch(`${URL}/api/news/${newsId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -57,76 +56,76 @@ const Ambassadors = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setAmbassadorsData(ambassadorsData.filter(ambassador => ambassador._id !== ambassadorId));
+        setNewsData(newsData.filter(news => news._id !== newsId));
         setDeleteMessage(data.message);
       } else {
-        setDeleteMessage(data.message || 'Error occurred while deleting the ambassador.');
+        setDeleteMessage(data.message || 'Error occurred while deleting the news.');
       }
     } catch (error) {
-      setDeleteMessage('Error occurred while deleting the ambassador.');
+      setDeleteMessage('Error occurred while deleting the news.');
       console.error('Error during the delete:', error);
     }
 
     setDeleteConfirmationOpen(true);
   };
 
-  const handleUpdate = (ambassadorId) => {
-    const ambassadoToUpdate = ambassadorsData.find(member => member._id === ambassadorId);
-    if (ambassadoToUpdate) {
-      setEditingAmbassador(ambassadoToUpdate); // Заповнення даними для редагування
-      setOpen(true); // Відкриття редактора
+  const handleUpdate = (newsId) => {
+    const newsToUpdate = newsData.find(article => article._id === newsId);
+    if (newsToUpdate) {
+      setEditingArticle(newsToUpdate);
+      setOpen(true);
     }
   };
 
-  const handleSaveUpdatedMember = (updatedAmbassador) => {
-    if (updatedAmbassador && updatedAmbassador._id) {
-      setAmbassadorsData(ambassadorsData.map(member => member._id === updatedAmbassador._id ? updatedAmbassador : member));
+  const handleSaveUpdatedArticle = (updatedArticle) => {
+    if (updatedArticle && updatedArticle._id) {
+      setNewsData(newsData.map(artilce => artilce._id === updatedArticle._id ? updatedArticle : artilce));
     } else {
-      console.error("Updated member does not have an _id:", updatedAmbassador);
+      console.error("Updated news does not have an _id:", updatedArticle);
     }
     setOpen(false);
-    setEditingAmbassador(null); // Очищення стану редагування
+    setEditingArticle(null); 
   };
 
-  const fetchAmbassadors = async () => {
+  const fetchNews = async () => {
     try {
-      const response = await fetch(`${URL}/api/ambassadors`);
+      const response = await fetch(`${URL}/api/news`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setAmbassadorsData(data.receivedAmbassadors);
+      console.log(data.receivedNews);
+      setNewsData(data.receivedNews);
     } catch (error) {
-      console.error("Could not fetch Ambassador:", error);
+      console.error("Could not fetch News:", error);
     }
   };
 
   useEffect(() => {
-    fetchAmbassadors();
-    checkAuthorization(); // Перевірка авторизації при завантаженні
+    fetchNews();
+    checkAuthorization();
   }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setEditingAmbassador(null); // Очищення стану редагування при закритті
+    setEditingArticle(null); 
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.team}>
       {isAuthorized && (
         <Button variant="contained" color="primary" onClick={handleOpen}>
-          Додати амбасадора
+          Додати новину
         </Button>
       )}
       <div className={styles.cards}>
-        {ambassadorsData.map((cardAmbassadorData) => (
-          <AmbassadorCard
-            key={cardAmbassadorData._id}
-            ambassadorId={cardAmbassadorData._id}
-            name={cardAmbassadorData.name}
-            description={cardAmbassadorData.description}
-            mainPhoto={cardAmbassadorData.mainPhoto}
+        {newsData.map((cardNewsData) => (
+          <NewsCard
+            key={cardNewsData._id}
+            heroId={cardNewsData._id}
+            name={cardNewsData.name}
+            contentData={cardNewsData.content}
             isAuthorized={isAuthorized}
             handleDelete={handleDelete}
             handleUpdate={handleUpdate}
@@ -149,11 +148,11 @@ const Ambassadors = () => {
         }}>
           <Editor
             onClose={handleClose}
-            posts={ambassadorsData}
-            addPost={setAmbassadorsData}
-            mode={editingAmbassador ? 'update' : 'create'}
-            initialData={editingAmbassador}
-            onUpdate={handleSaveUpdatedMember}
+            posts={newsData}
+            addPost={setNewsData}
+            mode={editingArticle ? 'update' : 'create'}
+            initialData={editingArticle}
+            onUpdate={handleSaveUpdatedArticle}
           />
         </Box>
       </Modal>
@@ -177,4 +176,4 @@ const Ambassadors = () => {
   );
 };
 
-export default Ambassadors;
+export default News;

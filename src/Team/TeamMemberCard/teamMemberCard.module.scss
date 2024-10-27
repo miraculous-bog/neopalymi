@@ -1,30 +1,56 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
-.teamMemberCard {
+.wrapper {
   max-width: 275px;
-  
-  .container {  // Correct the class name
+  line-height: 24px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 30px;
+  @include tablet {
+    max-width: 205px;
+  }
+  @include mobile {
+    max-width: 145px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 20px;
+  }
+  .container {
     border: 2px solid var(--primary-main-color);
-    border-radius: 10px; // Ensure border-radius is applied to the container
-    overflow: hidden;  // This ensures that the image respects the border radius
+    border-radius: 10px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px; // Add some padding around the image for better aesthetics
+    padding: 10px;
 
     .photo {
       width: 100%;
       height: auto;
       border-radius: 10px; // Ensure the image itself also gets the border radius
-      object-fit: cover;   // Makes sure the image fills the container proportionally
+      object-fit: cover; // Makes sure the image fills the container proportionally
     }
   }
-
-  h3 {
-    text-align: center;
+  .name {
+    font-weight: 600;
+    margin-top: 27px;
+    @include mobile {
+      margin-top: 12px;
+    }
   }
-
-  p {
-    text-align: center;
+  .position {
+    font-weight: 400;
+    color: var(--primary-main-color);
+    margin-top: 5px;
+    @include mobile {
+      margin-top: 3px;
+    }
+  }
+  .description {
+    text-align: left;
+    margin-top: 10px;
+    @include mobile {
+      text-align: center;
+    }
   }
 }

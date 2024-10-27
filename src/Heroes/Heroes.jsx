@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import AmbassadorCard from './AmbassadorCard/AmbassadorCard';
+import HeroCard from './HeroCard/HeroCard';
 import Editor from './Editor';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import URL from '../helper/data';
-import styles from '../Team/team.module.scss';
+import styles from './heroes.module.scss';
 
-const Ambassadors = () => {
-  const [ambassadorsData, setAmbassadorsData] = useState([]);
+const Heroes = () => {
+  const [heroesData, setHeroesData] = useState([]);
   const [open, setOpen] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false); // Для авторизації
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState('');
-  const [editingAmbassador, setEditingAmbassador] = useState(null); // Для редагування члена команди
+  const [editingHero, setEditingHero] = useState(null); // Для редагування члена команди
 
   // Функція перевірки авторизації
   const checkAuthorization = async () => {
@@ -45,10 +45,10 @@ const Ambassadors = () => {
     }
   };
 
-  const handleDelete = async (ambassadorId) => {
+  const handleDelete = async (heroId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${URL}/api/ambassadors/${ambassadorId}`, {
+      const response = await fetch(`${URL}/api/heroes/${heroId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -57,10 +57,10 @@ const Ambassadors = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setAmbassadorsData(ambassadorsData.filter(ambassador => ambassador._id !== ambassadorId));
+        setHeroesData(heroesData.filter(hero => hero._id !== heroId));
         setDeleteMessage(data.message);
       } else {
-        setDeleteMessage(data.message || 'Error occurred while deleting the ambassador.');
+        setDeleteMessage(data.message || 'Error occurred while deleting the heroes.');
       }
     } catch (error) {
       setDeleteMessage('Error occurred while deleting the ambassador.');
@@ -70,63 +70,64 @@ const Ambassadors = () => {
     setDeleteConfirmationOpen(true);
   };
 
-  const handleUpdate = (ambassadorId) => {
-    const ambassadoToUpdate = ambassadorsData.find(member => member._id === ambassadorId);
-    if (ambassadoToUpdate) {
-      setEditingAmbassador(ambassadoToUpdate); // Заповнення даними для редагування
-      setOpen(true); // Відкриття редактора
+  const handleUpdate = (heroId) => {
+    const heroToUpdate = heroesData.find(member => member._id === heroId);
+    if (heroToUpdate) {
+      setEditingHero(heroToUpdate);
+      setOpen(true);
     }
   };
 
-  const handleSaveUpdatedMember = (updatedAmbassador) => {
-    if (updatedAmbassador && updatedAmbassador._id) {
-      setAmbassadorsData(ambassadorsData.map(member => member._id === updatedAmbassador._id ? updatedAmbassador : member));
+  const handleSaveUpdatedMember = (updatedHero) => {
+    if (updatedHero && updatedHero._id) {
+      setHeroesData(heroesData.map(member => member._id === updatedHero._id ? updatedHero : member));
     } else {
-      console.error("Updated member does not have an _id:", updatedAmbassador);
+      console.error("Updated member does not have an _id:", updatedHero);
     }
     setOpen(false);
-    setEditingAmbassador(null); // Очищення стану редагування
+    setEditingHero(null); // Очищення стану редагування
   };
 
-  const fetchAmbassadors = async () => {
+  const fetchHeroes = async () => {
     try {
-      const response = await fetch(`${URL}/api/ambassadors`);
+      const response = await fetch(`${URL}/api/heroes`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setAmbassadorsData(data.receivedAmbassadors);
+      console.log(data.receivedHeroes);
+      setHeroesData(data.receivedHeroes);
     } catch (error) {
-      console.error("Could not fetch Ambassador:", error);
+      console.error("Could not fetch Hero:", error);
     }
   };
 
   useEffect(() => {
-    fetchAmbassadors();
+    fetchHeroes();
     checkAuthorization(); // Перевірка авторизації при завантаженні
   }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setEditingAmbassador(null); // Очищення стану редагування при закритті
+    setEditingHero(null); // Очищення стану редагування при закритті
   };
 
   return (
-    <div className={styles.container}>
-      {isAuthorized && (
+    <div className={styles.team}>
+      {isAuthorized && ( // Перевірка авторизації для відображення кнопки додавання
         <Button variant="contained" color="primary" onClick={handleOpen}>
           Додати амбасадора
         </Button>
       )}
       <div className={styles.cards}>
-        {ambassadorsData.map((cardAmbassadorData) => (
-          <AmbassadorCard
-            key={cardAmbassadorData._id}
-            ambassadorId={cardAmbassadorData._id}
-            name={cardAmbassadorData.name}
-            description={cardAmbassadorData.description}
-            mainPhoto={cardAmbassadorData.mainPhoto}
+        {heroesData.map((cardHeroData) => (
+          <HeroCard
+            key={cardHeroData._id}
+            heroId={cardHeroData._id}
+            name={cardHeroData.name}
+            contentData={cardHeroData.content}
+            mainPhoto={cardHeroData.mainPhoto}
             isAuthorized={isAuthorized}
             handleDelete={handleDelete}
             handleUpdate={handleUpdate}
@@ -149,10 +150,10 @@ const Ambassadors = () => {
         }}>
           <Editor
             onClose={handleClose}
-            posts={ambassadorsData}
-            addPost={setAmbassadorsData}
-            mode={editingAmbassador ? 'update' : 'create'}
-            initialData={editingAmbassador}
+            posts={heroesData}
+            addPost={setHeroesData}
+            mode={editingHero ? 'update' : 'create'}
+            initialData={editingHero}
             onUpdate={handleSaveUpdatedMember}
           />
         </Box>
@@ -177,4 +178,4 @@ const Ambassadors = () => {
   );
 };
 
-export default Ambassadors;
+export default Heroes;

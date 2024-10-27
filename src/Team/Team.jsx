@@ -113,12 +113,13 @@ const Team = () => {
   };
 
   return (
-    <div className={styles.team}>
+    <div className={styles.container}>
       {isAuthorized && ( // Перевірка авторизації для відображення кнопки додавання
         <Button variant="contained" color="primary" onClick={handleOpen}>
           Додати члена команди
         </Button>
       )}
+      <h1 className={styles.title}>команда "неопалимих"</h1>
       <div className={styles.cards}>
         {teamData.map((cardMemberData) => (
           <TeamMemberCard
