@@ -1,0 +1,62 @@
+@import "../App.scss";
+
+.container {
+	max-width: $core-wrapper-width;
+	margin: 30px auto 0 auto;
+	padding: 0 32px;
+	@include mobile {
+		margin: 40px auto 0 auto;
+	}
+}
+.text {
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 26.82px;
+}
+.storyMain {
+	display: flex;
+	justify-content: space-between;
+	.mainPhoto {
+		border-radius: 20px;
+	}
+	.textBlock {
+		.title {
+			font-size: 100px;
+			font-weight: 700;
+			line-height: 121.9px;
+			text-transform: uppercase;
+		}
+		.text {
+			margin-top: 20px;
+			&:nth-child(2) {
+				margin-top: 38px;
+			}
+		}
+		.highlightMain {
+			font-size: 30px;
+			font-weight: 600;
+			line-height: 36.57px;
+			color: var(--primary-main-color);
+		}
+	}
+}
+
+
+.storySecondery {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 11px;
+	.secondPhoto {
+		border-radius: 20px;
+		margin-right: 10px;
+	}
+	.textBlock {
+		.highlightSecondary {
+			font-size: 24px;
+			font-weight: 600;
+			line-height: 29px;
+			color: var(--primary-main-color);
+			margin-top: 28px;
+		}
+	}
+}

@@ -13,6 +13,7 @@ import Team from './Team';
 import Ambassadors from './Ambassadors/Ambassdors';
 import Heroes from './Heroes/Heroes';
 import News from './News/News';
+import Donate from './Donate';
 // import Ambassadors from './Ambassadors';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="ambassadors" element={<Ambassadors />} />
           <Route path="heroes" element={<Heroes />} />
           <Route path="news" element={<News />} />
+          <Route path="donate" element={<Donate />} />
           {/* <Route path="not-found" element={<NotFound />} /> */}
 
 

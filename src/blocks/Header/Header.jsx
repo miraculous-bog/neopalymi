@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Logo from './components/Logo/Logo';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import NavLinks from './components/Navbar/NavLink';
 // import Profile from './components/Profile/Profile';
@@ -12,17 +12,24 @@ import SupportBtn from '../../components/MainButton';
 import styles from './header.module.scss';
 import '../../App.scss';
 
+const useHasExtraPath = () => { 
+  const location = useLocation();
+  const pathSegments = location.pathname.split("/").filter(Boolean);
+  const hasExtraPath = pathSegments.includes("neopalymi") && pathSegments.indexOf("neopalymi") < pathSegments.length - 1;
+
+  return hasExtraPath;
+}
+
 const Header = () => {
   const [burger, setBurger] = useState(false);
   const handleBurger = () => {
     setBurger((prevState) => !prevState);
   };
 
+  const hasExtraPath = useHasExtraPath();
 
   return (
-    <header
-      className={`${styles.header}`}
-    >
+    <header className={`${styles.header}`}>
       <div className={styles.wrapper}>
         <Logo />
 
@@ -40,7 +47,12 @@ const Header = () => {
         <Burger isOpen={burger} onClick={handleBurger} />
       </div>
 
-      <div className={styles.content}>
+      <div
+        className={styles.content}
+        style={{
+          display: hasExtraPath ? (burger ? 'block' : 'none') : 'block',
+        }}
+      >
         <div className={styles.text}>
           <h1 className={styles.motto}>вогонь запеклих не пече</h1>
           <h2 className={styles.title}>неопалимі</h2>
@@ -50,12 +62,9 @@ const Header = () => {
 
         {burger ? (
           <div className={styles.menu}>
-            {/* Перемикач мови відображається тільки на мобільних і планшетах */}
             <div className={`${styles.item} ${styles.hidden}`}>
               <LanguageToggle />
             </div>
-
-            {/* Навігація відображається тільки на мобільних і планшетах */}
             <nav className={styles.navbar}>
               <ul>
                 <li className={`${styles.item} ${styles.hidden}`}>
@@ -84,8 +93,7 @@ const Header = () => {
           </div>
         ) : null}
       </div>
-
-    </header >
+    </header>
   );
 };
 

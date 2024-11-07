@@ -7,7 +7,6 @@
   width: 100%;
   background-color: var(--primary-main-color);
   margin: 0;
-  // transition: padding 0.3s ease; /* Анимация для изменения паддинга */
   .wrapper {
     background-color: white;
     max-width: $core-wrapper-width;
@@ -21,13 +20,11 @@
     background-color: var(--primary-main-color);
 
     @include tablet {
-      // position: static;
       flex-direction: column;
       border: 2px solid (--core-color);
     }
   }
   @include tablet {
-    // position: static;
     flex-direction: column;
     border: 2px solid (--core-color);
   }
@@ -50,11 +47,16 @@
     text-align: center;
     margin-bottom: 88px;
     .motto {
+      font-family: 'NAMU', sans-serif;
       font-size: 42px;
       font-weight: 500;
       line-height: 50.4px;
       text-transform: uppercase;
       color: var(--primary-main-color);
+      @include mobile {
+        font-size: 19px;
+        line-height: 22.8px;
+      }
     }
     .title {
       font-family: Montserrat;
@@ -66,18 +68,28 @@
       position: relative;
       margin-top: 86px;
       display: inline;
+      @include mobile {
+        font-size: 20px;
+        line-height: 24.38px;
+      }
       &::before,
       &:after {
-        content: url("../../icons/neopalymi.svg"); /* Замініть 'URL_іконки' на шлях до вашої іконки */
+        content: url("../../icons/neopalymi.svg");
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
       }
       &::before {
-        left: 150px;
+        left: 20%;
       }
       &::after {
-        right: 150px;
+        right: 20%;
+      }
+      @include mobile {
+        &::before,
+        &:after {
+          display: none;
+        }       
       }
     }
     .about {
@@ -87,6 +99,11 @@
       line-height: 29.26px;
       color: var(--primary-light-color);
       margin-top: 15px;
+      margin-bottom: 88px;
+      @include mobile {
+        font-size: 15px;
+        line-height: 18.29px;
+      }
     }
   }
   .menu {
@@ -125,18 +142,19 @@
 }
 .hidden {
   display: none; // За замовчуванням приховано на всіх екранах
-  @media (max-width: 1024px) { // Показуємо елементи тільки на мобільних і планшетах до 1024px
+  @media (max-width: 1024px) {
+    // Показуємо елементи тільки на мобільних і планшетах до 1024px
     display: block;
   }
 }
 
 .show {
   display: block; // За замовчуванням відображається на великих екранах
-  @media (max-width: 1024px) { // Приховуємо на планшетах і мобільних пристроях
+  @media (max-width: 1024px) {
+    // Приховуємо на планшетах і мобільних пристроях
     display: none;
   }
 }
-
 
 .empty {
   max-width: 350px;
