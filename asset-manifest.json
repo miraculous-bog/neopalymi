@@ -1,11 +1,32 @@
 {
   "files": {
-    "main.css": "/neopalymi/static/css/main.037c2db1.css",
-    "main.js": "/neopalymi/static/js/main.10c0d172.js",
+    "main.css": "/neopalymi/static/css/main.fdfd4c44.css",
+    "main.js": "/neopalymi/static/js/main.f4afb4c3.js",
     "static/media/main.png": "/neopalymi/static/media/main.6e7e48b8bc172149e0ca.png",
+    "static/media/UA_FULL_Ukraine.geojson": "/neopalymi/static/media/UA_FULL_Ukraine.ff5f9244cbeee5e62dd7.geojson",
     "static/media/NAMU-Pro.ttf": "/neopalymi/static/media/NAMU-Pro.b30d0e0cc330be936b3e.ttf",
+    "static/media/Yuriy_wounded.png": "/neopalymi/static/media/Yuriy_wounded.095c50db60e572ab19e8.png",
+    "static/media/Montserrat-ExtraBoldItalic.ttf": "/neopalymi/static/media/Montserrat-ExtraBoldItalic.a22f67090d6cf291405a.ttf",
+    "static/media/Montserrat-BlackItalic.ttf": "/neopalymi/static/media/Montserrat-BlackItalic.9be75be0721b5c54a837.ttf",
+    "static/media/Montserrat-BoldItalic.ttf": "/neopalymi/static/media/Montserrat-BoldItalic.a169c71c1eb466896fe1.ttf",
+    "static/media/Montserrat-SemiBoldItalic.ttf": "/neopalymi/static/media/Montserrat-SemiBoldItalic.60907ef6dc10bb4e826a.ttf",
+    "static/media/Montserrat-LightItalic.ttf": "/neopalymi/static/media/Montserrat-LightItalic.ac3843da62f0afac7929.ttf",
+    "static/media/Montserrat-MediumItalic.ttf": "/neopalymi/static/media/Montserrat-MediumItalic.67e6dda3939a21720991.ttf",
+    "static/media/Montserrat-Italic.ttf": "/neopalymi/static/media/Montserrat-Italic.f4a742d68090a0bfc33f.ttf",
+    "static/media/Montserrat-ExtraLightItalic.ttf": "/neopalymi/static/media/Montserrat-ExtraLightItalic.8df5777e3ea85687bdf0.ttf",
+    "static/media/Montserrat-ThinItalic.ttf": "/neopalymi/static/media/Montserrat-ThinItalic.c9656dd4aed2ca4f5b1d.ttf",
+    "static/media/Montserrat-ExtraBold.ttf": "/neopalymi/static/media/Montserrat-ExtraBold.6c8b198832c88c649faa.ttf",
+    "static/media/Montserrat-Black.ttf": "/neopalymi/static/media/Montserrat-Black.beacc26b4bbaaf608567.ttf",
+    "static/media/Montserrat-Bold.ttf": "/neopalymi/static/media/Montserrat-Bold.50f0257aa1e905f4bfaf.ttf",
+    "static/media/Montserrat-SemiBold.ttf": "/neopalymi/static/media/Montserrat-SemiBold.93b37a465fc4ec0d0415.ttf",
+    "static/media/Montserrat-Medium.ttf": "/neopalymi/static/media/Montserrat-Medium.b8c6753baa964ccac1ba.ttf",
+    "static/media/Montserrat-Light.ttf": "/neopalymi/static/media/Montserrat-Light.7179b7d2ac9b599db5f9.ttf",
+    "static/media/Montserrat-Regular.ttf": "/neopalymi/static/media/Montserrat-Regular.24785cc015b27a3e964b.ttf",
+    "static/media/Montserrat-ExtraLight.ttf": "/neopalymi/static/media/Montserrat-ExtraLight.d928d1131a9af02cb672.ttf",
+    "static/media/Montserrat-Thin.ttf": "/neopalymi/static/media/Montserrat-Thin.9a7aece9cfe235bc0920.ttf",
     "static/media/supporter_ks.svg": "/neopalymi/static/media/supporter_ks.7b9d7fb91f07c4a1ec57b090684b451d.svg",
     "static/media/NAMU-1600.ttf": "/neopalymi/static/media/NAMU-1600.12e811775afb9ae840bf.ttf",
+    "static/media/Yuriy.png": "/neopalymi/static/media/Yuriy.339f7feb5f4fe98bf8f8.png",
     "static/media/NAMU-1750.ttf": "/neopalymi/static/media/NAMU-1750.5d33deba15ee59e64b8e.ttf",
     "static/media/NAMU-1400.ttf": "/neopalymi/static/media/NAMU-1400.dc653d7eb0f0c42314d2.ttf",
     "static/media/OrangeDefault.png": "/neopalymi/static/media/OrangeDefault.583f477913474875e869.png",
@@ -40,14 +61,15 @@
     "index.html": "/neopalymi/index.html",
     "static/media/facebook.svg": "/neopalymi/static/media/facebook.eb38a7007c47abc755f441911e1b7de7.svg",
     "static/media/burger_non_active.svg": "/neopalymi/static/media/burger_non_active.528757e510c692ff7b6fcc380baa0274.svg",
+    "static/media/index.cjs": "/neopalymi/static/media/index.cd351d7c31d0d3fccf96.cjs",
     "static/media/burger_active.svg": "/neopalymi/static/media/burger_active.285951d4ef6a6167f5d78a1fd2208be7.svg",
     "static/media/left_arrow.svg": "/neopalymi/static/media/left_arrow.94c239185aebb4a54d79e3a19a94d239.svg",
     "static/media/right_arrow.svg": "/neopalymi/static/media/right_arrow.0cd67f2adc9200d320ba8d1729db4ff3.svg",
-    "main.037c2db1.css.map": "/neopalymi/static/css/main.037c2db1.css.map",
-    "main.10c0d172.js.map": "/neopalymi/static/js/main.10c0d172.js.map"
+    "main.fdfd4c44.css.map": "/neopalymi/static/css/main.fdfd4c44.css.map",
+    "main.f4afb4c3.js.map": "/neopalymi/static/js/main.f4afb4c3.js.map"
   },
   "entrypoints": [
-    "static/css/main.037c2db1.css",
-    "static/js/main.10c0d172.js"
+    "static/css/main.fdfd4c44.css",
+    "static/js/main.f4afb4c3.js"
   ]
 }
