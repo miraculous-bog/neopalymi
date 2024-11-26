@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import URL_FORM from '../../helper/data_url_form';
 import Button from '../../components/Button/Button';
 
 import styles from './aboutUs.module.scss';
@@ -31,7 +32,9 @@ const AboutUs = () => {
 					</div>
 				</div>
 				<div style={{ display: 'flex', justifyContent: 'center', marginTop: '55px'}}>
+				<Link to={URL_FORM}>
 					<Button text='Заповнити форму' />
+					</Link>
 				</div>
 			</div>
 		</div>

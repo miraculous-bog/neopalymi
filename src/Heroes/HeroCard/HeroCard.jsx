@@ -6,12 +6,9 @@ import URL from '../../helper/data';
 import styles from './heroCard.module.scss';
 import sanitizeHtml from 'sanitize-html';
 
-const HeroCard = ({ name, contentData, mainPhoto, isAuthorized, handleDelete, handleUpdate, heroId }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const HeroCard = ({ name, contentData, mainPhoto, isAuthorized, handleDelete, handleUpdate, heroId,handleDetailData }) => {
+  const [fullContent, setFullContent] = useState("");
   const [showButton, setShowButton] = useState(false);
-  const [shortHtml, setShortHtml] = useState("");
-  const [fullHtml, setFullHtml] = useState("");
-  const [contentHeight, setContentHeight] = useState('auto'); // Стейт для висоти контенту
 
   const maxLength = 1260;
   const contentRef = useRef(null); // Посилання на блок з текстом
@@ -41,26 +38,17 @@ const HeroCard = ({ name, contentData, mainPhoto, isAuthorized, handleDelete, ha
 
   useEffect(() => {
     if (contentData.length > maxLength) {
-      setShortHtml(truncateAndSanitizeHtml(contentData, maxLength) + '...'); // Додаємо три крапки після обрізаного тексту
-      setFullHtml(sanitizeHtml(contentData)); // Очищаємо весь HTML для повного показу
+      setFullContent(truncateAndSanitizeHtml(contentData, maxLength) + '...');
       setShowButton(true);
     } else {
-      setShortHtml(sanitizeHtml(contentData)); // Очищений HTML без обрізки
-      setFullHtml(sanitizeHtml(contentData));
+      setFullContent(sanitizeHtml(contentData));
       setShowButton(false);
     }
   }, [contentData]);
 
-  // Після відображення контенту визначаємо його повну висоту
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(isExpanded ? `${contentRef.current.scrollHeight}px` : '200px');
-    }
-  }, [isExpanded, fullHtml]);
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
+
+  
 
   return (
     <div className={styles.container}>
@@ -86,21 +74,14 @@ const HeroCard = ({ name, contentData, mainPhoto, isAuthorized, handleDelete, ha
         <div className={styles.text}>
           <h3 className={styles.title}>{name}</h3>
 
-          <motion.div
-            initial={false}
-            animate={{ height: contentHeight }}
-            transition={{ duration: 0.5 }}
-            style={{ overflow: 'hidden' }}
-          >
             <div
               className={styles.info}
               ref={contentRef}
-              dangerouslySetInnerHTML={{ __html: isExpanded ? fullHtml : shortHtml }}
+              dangerouslySetInnerHTML={{ __html: fullContent }}
             />
-          </motion.div>
           {showButton && (
-            <button className={styles.button} onClick={toggleExpand}>
-              {isExpanded ? "Згорнути" : "Читати більше"}
+            <button className={styles.button} onClick={() => handleDetailData({name,content: contentData, mainPhoto})}>
+              {"Читати більше"}
             </button>
           )}
         </div>

@@ -24,7 +24,7 @@ function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdat
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
   const [error, setError] = useState({ name: false, content: false, image: false });
-
+  const tokenAuth = localStorage.getItem('token');
   useEffect(() => {
     if (mode === 'update' && initialData) {
       setName(initialData.name);
@@ -64,6 +64,7 @@ function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdat
       const response = await fetch(url, {
         method: method,
         body: formData,
+        headers: { 'Authorization': `Bearer ${tokenAuth}`, },
       });
 
       const result = await response.json();

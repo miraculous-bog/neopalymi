@@ -3,91 +3,80 @@ import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
+import 'react-quill/dist/quill.snow.css';
 import styles from './editor.module.scss';
 import URL from '../../helper/data';
-
 const modules = {
   toolbar: [
-    [{ 'header': [1, 2, false] }],
+    [{ header: [1, 2, false] }],
     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+    [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
     ['link', 'image'],
-    ['clean']
+    ['clean'],
   ],
 };
 
-
 function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdate }) {
-  console.log(initialData);
-  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [image, setImage] = useState(null);
-  const [error, setError] = useState({ name: false, content: false, image: false });
-
+  const [error, setError] = useState({ title: false, content: false });
+  const [serverError, setServerError] = useState('');
+  const tokenAuth = localStorage.getItem('token');
   useEffect(() => {
     if (mode === 'update' && initialData) {
-      setName(initialData.name);
-      setContent(initialData.content);
-      setImage(initialData.mainPhoto);
+      setTitle(initialData.title || '');
+      setContent(initialData.content || '');
     }
   }, [initialData, mode]);
 
-  const handleImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!name || !content || (!image && mode === 'create')) {
+    if (!title || !content) {
       setError({
-        name: !name,
+        title: !title,
         content: !content,
-        image: mode === 'create' && !image,
       });
       return;
     }
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('content', content);
-    if (image instanceof File) {
-      formData.append('mainPhoto', image); // Only append image if it's a new file
-    }
-
+    const payload = { title, content }; // Simple JSON payload
+    const url = mode === 'create' ? `${URL}/api/news` : `${URL}/api/news/${initialData._id}`;
+    const method = mode === 'create' ? 'POST' : 'PUT';
+    console.log(title, content);
     try {
-      const url = mode === 'create' ? `${URL}/api/heroes` : `${URL}/api/heroes/${initialData._id}`;
-      const method = mode === 'create' ? 'POST' : 'PUT';
-
       const response = await fetch(url, {
-        method: method,
-        body: formData,
+        method,
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${tokenAuth}`, },
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
-      console.log("Response from server:", result); // Логування результату
+      console.log('Response from server:', result);
 
-      if (mode === 'create') {
-        onClose();
-        addPost([...posts, result.post]);
+      if (response.ok) {
+        if (mode === 'create') {
+          addPost([...posts, result.article]);
+        } else {
+          onUpdate(result.article);
+        }
+        onClose(); // Close the editor after success
       } else {
-        onUpdate(result.ambassador); // Передаємо саме об'єкт `teamMember`
+        setServerError(result.message || 'An error occurred. Please try again.');
       }
     } catch (error) {
       console.error('Error during the upload:', error);
+      setServerError('Failed to upload. Please try again later.');
     }
   };
 
   return (
     <div className={styles.wrapper} style={{ backgroundColor: '#92B6D7', padding: '20px', borderRadius: '10px' }}>
       <TextField
-        label="Name"
+        label="Title"
         variant="outlined"
         error={error.name}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         helperText={error.name && "Будь ласка, введіть ім'я."}
         fullWidth
         margin="normal"
@@ -95,21 +84,14 @@ function Editor({ onClose, posts, addPost, mode = 'create', initialData, onUpdat
       />
       <ReactQuill theme="snow" value={content} onChange={setContent} modules={modules} />
       {error.content && <p style={{ color: '#D32F2F' }}>Будь ласка, введіть опис.</p>}
-
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}
-        style={{ marginBottom: '15px' }}
-      />
-      {error.image && <p style={{ color: '#D32F2F' }}>Будь ласка, завантажте головне зображення.</p>}
-      {image && image.name && <p>Завантажене зображення: {image.name}</p>}
+      {serverError && <p style={{ color: '#D32F2F' }}>{serverError}</p>}
 
       <Button
         variant="contained"
         color="primary"
         onClick={handleSubmit}
-        style={{ backgroundColor: '#047CC8', color: '#fff' }}>
+        style={{ backgroundColor: '#047CC8', color: '#fff', marginTop: '20px' }}
+      >
         {mode === 'create' ? 'Зберегти' : 'Оновити'}
       </Button>
     </div>

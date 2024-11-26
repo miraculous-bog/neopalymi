@@ -7,6 +7,7 @@ import NavLinks from './components/Navbar/NavLink';
 import Burger from './components/Burger/Burger';
 import Button from '../../components/Button';
 import LanguageToggle from './components/LanguageToggle';
+import URL_FORM from '../../helper/data_url_form';
 import SocialMedia from '../../components/SocialMedia';
 import SupportBtn from '../../components/MainButton';
 import styles from './header.module.scss';
@@ -40,7 +41,7 @@ const Header = () => {
 
         {/* Перемикач мови відображається тільки на великих екранах */}
         <div className={styles.show}>
-          <LanguageToggle />
+          {/* <LanguageToggle /> */}
         </div>
 
         {/* Бургер-меню */}
@@ -57,13 +58,15 @@ const Header = () => {
           <h1 className={styles.motto}>вогонь запеклих не пече</h1>
           <h2 className={styles.title}>неопалимі</h2>
           <p className={styles.about}>Національна програма зовнішньої реабілітації</p>
+          <Link to={URL_FORM}>
           <Button />
+          </Link>
         </div>
 
         {burger ? (
           <div className={styles.menu}>
             <div className={`${styles.item} ${styles.hidden}`}>
-              <LanguageToggle />
+              {/* <LanguageToggle /> */}
             </div>
             <nav className={styles.navbar}>
               <ul>

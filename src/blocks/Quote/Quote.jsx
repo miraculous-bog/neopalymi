@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import getPath from '../../helper/github_img_path';
+import URL_FORM from '../../helper/data_url_form';
 import styles from './quote.module.scss';
 
-const Quote = ({data}) => {
+const Quote = ({ data }) => {
 	const { quote, name, about, img, type } = data;
 	console.log({ quote, name, about, img, type });
 	return (
@@ -36,7 +38,9 @@ const Quote = ({data}) => {
 						marginTop: '55px',
 					}}
 				>
-					<Button text="Заповнити форму" />
+					<Link to={URL_FORM}>
+						<Button text="Заповнити форму" />
+					</Link>
 				</div>
 			</div>
 		</div>

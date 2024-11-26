@@ -1,3 +1,4 @@
+@import url('../../App.scss');
 
 .title {
 	text-align: center;
@@ -30,4 +31,22 @@
 }
 .next {
     right: -25px;
+}
+.button {
+	border-radius: 8px;
+	border: 2px solid var(--primary-main-color);
+	color:var(--primary-light-color);
+	cursor: pointer;
+	width: 258px;
+	height: 57px;
+	font-size: 18px;
+	font-weight: 500;
+	// padding: 13px 30px;
+	background-color: var(--primary-main-color);
+    margin: 0 auto;
+	&:hover {
+		background-color: var(--primary-light-color);
+		color:var(--primary-main-color);
+
+	}
 }

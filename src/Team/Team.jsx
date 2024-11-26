@@ -15,7 +15,7 @@ const Team = () => {
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState('');
   const [editingMember, setEditingMember] = useState(null); // Для редагування члена команди
-
+  const tokenAuth = localStorage.getItem('token');
   // Функція перевірки авторизації
   const checkAuthorization = async () => {
     try {
@@ -47,11 +47,10 @@ const Team = () => {
 
   const handleDelete = async (teamMemberId) => {
     try {
-      const token = localStorage.getItem('token');
       const response = await fetch(`${URL}/api/team/${teamMemberId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${tokenAuth}`,
         },
       });
       const data = await response.json();

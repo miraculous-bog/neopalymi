@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
 
-import SliderCard from '../SliderBlocks/SliderCard';
+import SliderMediaCard from './SliderMediaCard';
 
 import LeftArrow from '../../content_images/left_arrow.svg';
 import RightArrow from '../../content_images/right_arrow.svg';
@@ -87,7 +87,7 @@ const SliderNews = () => {
 				<div className={`.slider-container`} style={{ padding: '0 0px' }}>
 					<Slider {...settings}>
 						{data_news.map((cardNewsData) =>
-						(<SliderCard name={cardNewsData.name}
+						(<SliderMediaCard name={cardNewsData.name}
 							imageSrc={getPath(cardNewsData.imageSrc)}
 							key={cardNewsData.name} />)
 						)}

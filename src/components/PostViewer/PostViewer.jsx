@@ -11,13 +11,11 @@ import styles from './news.module.scss';
 const News = () => {
   const [newsData, setNewsData] = useState([]);
   const [open, setOpen] = useState(false);
-  const [postWindowStatus, setPostWindowStatus] = useState(false);
-  const [currentWindowData, setCurrentWindowData] = useState({ title: '', contentData: '' });
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState('');
   const [editingArticle, setEditingArticle] = useState(null);
-  const tokenAuth = localStorage.getItem('token');
+
   const checkAuthorization = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -48,10 +46,11 @@ const News = () => {
 
   const handleDelete = async (newsId) => {
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(`${URL}/api/news/${newsId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${tokenAuth}`,
+          'Authorization': `Bearer ${token}`,
         },
       });
       const data = await response.json();
@@ -85,7 +84,7 @@ const News = () => {
       console.error("Updated news does not have an _id:", updatedArticle);
     }
     setOpen(false);
-    setEditingArticle(null);
+    setEditingArticle(null); 
   };
 
   const fetchNews = async () => {
@@ -110,40 +109,11 @@ const News = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setEditingArticle(null);
+    setEditingArticle(null); 
   };
 
-  const handleOpenWindowSpecificArticle = (data) => {
-    setCurrentWindowData(data);
-    setPostWindowStatus(true);
-  };
-  useEffect(() => {
-    if (postWindowStatus) {
-      console.log('Updated currentWindowData:', currentWindowData);
-    }
-  }, [currentWindowData, postWindowStatus]);
   return (
     <div className={styles.team}>
-      {isAuthorized && (
-        <Button variant="contained" color="primary" onClick={handleOpen}>
-          Додати новину
-        </Button>
-      )}
-      <div className={styles.cards}>
-        {newsData.map((cardNewsData) => (
-          <NewsCard
-            key={cardNewsData._id}
-            heroId={cardNewsData._id}
-            title={cardNewsData.title}
-            contentData={cardNewsData.content}
-            isAuthorized={isAuthorized}
-            handleDelete={handleDelete}
-            handleUpdate={handleUpdate}
-            handleDetailData={handleOpenWindowSpecificArticle}
-          />
-        ))}
-      </div>
-
       <Modal open={open} onClose={handleClose}>
         <Box sx={{
           position: 'absolute',
@@ -183,33 +153,6 @@ const News = () => {
           <Button onClick={() => setDeleteConfirmationOpen(false)}>Окей</Button>
         </Box>
       </Modal>
-
-      <Modal open={postWindowStatus} onClose={() => setPostWindowStatus(false)}>
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            width: '80%', // Задаємо ширину у відсотках
-            maxWidth: '1200px', // Можна обмежити максимальну ширину
-            transform: 'translate(-50%, -50%)',
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          {currentWindowData.contentData ? (
-            <div
-              className={styles.infoArticle}
-              dangerouslySetInnerHTML={{ __html: currentWindowData.contentData }}
-            />
-          ) : (
-            <Typography>Завантаження даних...</Typography>
-          )}
-          <Button onClick={() => setPostWindowStatus(false)}>Вийти</Button>
-        </Box>
-      </Modal>
-
     </div>
   );
 };

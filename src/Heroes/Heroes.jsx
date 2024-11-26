@@ -11,11 +11,13 @@ import styles from './heroes.module.scss';
 const Heroes = () => {
   const [heroesData, setHeroesData] = useState([]);
   const [open, setOpen] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(false); // Для авторизації
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState('');
-  const [editingHero, setEditingHero] = useState(null); // Для редагування члена команди
-
+  const [editingHero, setEditingHero] = useState(null);
+  const [postWindowStatus, setPostWindowStatus] = useState(false);
+  const [currentWindowData, setCurrentWindowData] = useState({ name: '', content: '',mainPhoto: '' });
+  const tokenAuth = localStorage.getItem('token');
   // Функція перевірки авторизації
   const checkAuthorization = async () => {
     try {
@@ -47,11 +49,10 @@ const Heroes = () => {
 
   const handleDelete = async (heroId) => {
     try {
-      const token = localStorage.getItem('token');
       const response = await fetch(`${URL}/api/heroes/${heroId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${tokenAuth}`,
         },
       });
       const data = await response.json();
@@ -110,9 +111,17 @@ const Heroes = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setEditingHero(null); // Очищення стану редагування при закритті
+    setEditingHero(null);
   };
-
+  const handleOpenWindowSpecificHero = (data) => {
+    setCurrentWindowData(data);
+    setPostWindowStatus(true);
+  };
+  useEffect(() => {
+    if (postWindowStatus) {
+      console.log('Updated currentWindowData:', currentWindowData);
+    }
+  }, [currentWindowData, postWindowStatus]);
   return (
     <div className={styles.team}>
       {isAuthorized && ( // Перевірка авторизації для відображення кнопки додавання
@@ -131,6 +140,7 @@ const Heroes = () => {
             isAuthorized={isAuthorized}
             handleDelete={handleDelete}
             handleUpdate={handleUpdate}
+            handleDetailData={handleOpenWindowSpecificHero}
           />
         ))}
       </div>
@@ -172,6 +182,32 @@ const Heroes = () => {
         }}>
           <Typography>{deleteMessage}</Typography>
           <Button onClick={() => setDeleteConfirmationOpen(false)}>Окей</Button>
+        </Box>
+      </Modal>
+
+      <Modal open={postWindowStatus} onClose={() => setPostWindowStatus(false)}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '80%',
+            maxWidth: '1200px',
+            transform: 'translate(-50%, -50%)',
+            bgcolor: 'background.paper',
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          {currentWindowData.content ? (
+            <div
+              className={styles.infoHero}
+              dangerouslySetInnerHTML={{ __html: currentWindowData.content }}
+            />
+          ) : (
+            <Typography>Завантаження даних...</Typography>
+          )}
+          <Button onClick={() => setPostWindowStatus(false)}>Вийти</Button>
         </Box>
       </Modal>
     </div>

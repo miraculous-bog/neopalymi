@@ -3,7 +3,7 @@ import React from 'react';
 import AboutUs from '../blocks/AboutUs';
 import SliderBlocks from '../blocks/SliderBlocks';
 import SliderNews from '../blocks/SliderNews';
-import MultiSlider from '../blocks/MultiSlider';
+import AmbassadorsSlider from '../blocks/AmbassadorsSlider';
 import Quote from '../blocks/Quote';
 import styles from './main.module.scss';
 import Acheivment from '../blocks/Acheivment';
@@ -22,7 +22,7 @@ const Main = () => {
       <Quote data={DataQuotes.ihor} />
       <SliderBlocks />
       <SliderNews />
-      <MultiSlider />
+      <AmbassadorsSlider />
       <Map />
       <Partners />
       <Supporters />
