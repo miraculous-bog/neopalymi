@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/neopalymi" element={<Layout />}>
           <Route index element={<Main />} />
-          <Route path="signIn" element={<SignIn />} />
+          <Route path="login" element={<SignIn />} />
           <Route path="team" element={<Team />} />
           <Route path="ambassadors" element={<Ambassadors />} />
           <Route path="heroes" element={<Heroes />} />
