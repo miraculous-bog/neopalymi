@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/neopalymi/static/css/main.fdfd4c44.css",
-    "main.js": "/neopalymi/static/js/main.f4afb4c3.js",
+    "main.js": "/neopalymi/static/js/main.87e3545a.js",
     "static/media/main.png": "/neopalymi/static/media/main.6e7e48b8bc172149e0ca.png",
     "static/media/UA_FULL_Ukraine.geojson": "/neopalymi/static/media/UA_FULL_Ukraine.ff5f9244cbeee5e62dd7.geojson",
     "static/media/NAMU-Pro.ttf": "/neopalymi/static/media/NAMU-Pro.b30d0e0cc330be936b3e.ttf",
@@ -66,10 +66,10 @@
     "static/media/left_arrow.svg": "/neopalymi/static/media/left_arrow.94c239185aebb4a54d79e3a19a94d239.svg",
     "static/media/right_arrow.svg": "/neopalymi/static/media/right_arrow.0cd67f2adc9200d320ba8d1729db4ff3.svg",
     "main.fdfd4c44.css.map": "/neopalymi/static/css/main.fdfd4c44.css.map",
-    "main.f4afb4c3.js.map": "/neopalymi/static/js/main.f4afb4c3.js.map"
+    "main.87e3545a.js.map": "/neopalymi/static/js/main.87e3545a.js.map"
   },
   "entrypoints": [
     "static/css/main.fdfd4c44.css",
-    "static/js/main.f4afb4c3.js"
+    "static/js/main.87e3545a.js"
   ]
 }
